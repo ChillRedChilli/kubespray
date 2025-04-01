@@ -52,3 +52,10 @@
     content: |
       vhost_vsock
       vhost_net
+
+- name: Kata-containers | Configure firecracker hypervisor
+  include_tasks: "firecracker.yml"
+  when: 
+    - kata_containers_fc_enabled | bool
+    - inventory_hostname in groups['kube_node']
+    - inventory_hostname not in groups['kube_control_plane']

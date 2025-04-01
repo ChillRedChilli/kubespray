@@ -6,5 +6,5 @@
     "uid": "hdishd83djaidwnduwk28bcsb"
   },
   "linux": {},
-  "log_directory": "/tmp"
+  "log_directory": "/tmp/log_kata-qemu"
 }

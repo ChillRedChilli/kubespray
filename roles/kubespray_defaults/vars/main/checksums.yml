@@ -821,6 +821,7 @@ youki_checksums:
     0.4.0: sha256:0d897debaee98a937188317304a9caafb0da5bf798717aefedf113c108f73263
 kata_containers_binary_checksums:
   amd64:
+    3.28.0: sha256:99cefb46d70bc27b7bcffd7595be9010c6bed43e1cdfcf8078554c19e7c9b19d
     3.7.0: sha256:bebf218cafdc082476c7dabbcc5439aee6a41d6dda24dd3cfffbe0a6ae94e23d
     3.6.0: sha256:d418859e123d04edd71e79c8f532213e5281ec7170b97cdfe3cf85487187d60f
     3.5.0: sha256:cd0e6a70828db3f9e27390f08c863edda36824c201c35eaa0a4c7498b7e4c9e3
