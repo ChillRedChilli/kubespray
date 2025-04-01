@@ -1,5 +1,6 @@
 import os
 
+import pytest
 import testinfra.utils.ansible_runner
 
 testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
@@ -21,17 +22,19 @@ def test_run_check(host):
     assert cmd.rc == 0
     assert "System is capable of running" in cmd.stdout
 
+@pytest.mark.parametrize("runtime", [
+    "kata-qemu",
+    "kata-fc"
+])
+def test_run_pod(host, runtime):
 
-def test_run_pod(host):
-    runtime = "kata-qemu"
-
-    run_command = "/usr/local/bin/crictl run --with-pull --runtime {} /tmp/container.json /tmp/sandbox.json".format(runtime)
+    run_command = "/usr/local/bin/crictl run --with-pull --runtime {0} /tmp/container.json /tmp/sandbox_{0}.json".format(runtime)
     with host.sudo():
         cmd = host.command(run_command)
     assert cmd.rc == 0
 
     with host.sudo():
-      log_f = host.file("/tmp/kata1.0.log")
+      log_f = host.file("/tmp/log_{}/kata1.0.log".format(runtime))
 
       assert log_f.exists
       assert b"Hello from Docker" in log_f.content
