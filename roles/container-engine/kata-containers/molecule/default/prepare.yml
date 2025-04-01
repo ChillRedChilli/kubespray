@@ -32,7 +32,8 @@
         mode: "0644"
       with_items:
         - container.json
-        - sandbox.json
+        - sandbox_kata-qemu.json
+        - sandbox_kata-fc.json
     - name: Create /etc/cni/net.d directory
       file:
         path: /etc/cni/net.d
