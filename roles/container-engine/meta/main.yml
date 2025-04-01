@@ -6,13 +6,6 @@ dependencies:
       - container-engine
       - validate-container-engine
 
-  - role: container-engine/kata-containers
-    when:
-      - kata_containers_enabled
-    tags:
-      - container-engine
-      - kata-containers
-
   - role: container-engine/gvisor
     when:
       - gvisor_enabled
@@ -56,3 +49,10 @@ dependencies:
     tags:
       - container-engine
       - docker
+
+  - role: container-engine/kata-containers
+    when:
+      - kata_containers_enabled
+    tags:
+      - container-engine
+      - kata-containers

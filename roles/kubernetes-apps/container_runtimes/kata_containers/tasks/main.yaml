@@ -11,7 +11,18 @@
 - name: Kata Containers | Templates list
   set_fact:
     kata_containers_templates:
-      - { name: runtimeclass-kata-qemu, file: runtimeclass-kata-qemu.yml, type: runtimeclass }
+      - { name: runtimeclass-kata-qemu, file: runtimeclass-kata-qemu.yml, type: runtimeclass}
+
+- name: Kata Containers | Add Firecracker to list
+  set_fact:
+    kata_containers_templates: "{{ kata_containers_templates + [{'name': 'runtimeclass-kata-fc', 'file': 'runtimeclass-kata-fc.yml', 'type': 'runtimeclass'}] }}"
+  when:
+    - kata_containers_fc_enabled
+
+- name: Display all variables/facts known for a host
+  ansible.builtin.debug:
+    var: kata_containers_templates
+    verbosity: 4
 
 - name: Kata Containers | Create manifests
   template:
